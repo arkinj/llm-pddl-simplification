@@ -192,10 +192,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified abstract-content">
           <p>
-           Recent advances in large language models (LLMs) have shown promise for translating natural language into robot action sequences for complex tasks. However, existing approaches either translate the natural language directly into robot trajectories or factor the inference process by decomposing language into task sub-goals and relying on a motion planner to execute each sub-goal. When complex environmental and temporal constraints are involved, inference over planning tasks must be performed jointly with motion plans using traditional task-and-motion planning (TAMP) algorithms, making factorization into subgoals untenable. 
-          </p>
-          <p>
-           Rather than using LLMs to directly plan task sub-goals, we instead perform few-shot translation from natural language task descriptions to an intermediate task representation that can then be consumed by a TAMP algorithm to jointly solve the task and motion plan. To improve translation, we automatically detect and correct both syntactic and semantic errors via autoregressive re-prompting, resulting in significant improvements in task completion.
+           While traditional planners can quickly find plans in simple environments, task planning is slow in worlds with many objects. However, for a specific task, many of those objects are irrelevant and distract the planner during search. By removing irrelevant objects from the environment description, planning can be made more efficient. We investigate using pre-trained large language models (LLMs) to reason over the complete description of a planning problem and generate a simplified problem that excludes irrelevant objects. We test several different prompting techniques on multiple LLMs applied to problems consisting of hundreds of objects for four task planning domains.
           </p>
         </div>
       </div>
@@ -222,7 +219,7 @@
         alt=""/>
       <h2 class="subtitle has-text-centered" style="color: red;">
         <br/>
-        Part1 of full prompt used by our AutoTAMP framework. The green part is the task explanation and the blue part is the few-shot examples.
+        The average planning runtime over all problems in each domain. The black dashed line indicates the planning runtime when planning with all objects.
         </h2>     
     </div>
   </div>
@@ -236,7 +233,7 @@
         alt=""/>
       <h2 class="subtitle has-text-centered" style="color: red;">
         <br/>
-        Part2 of full prompt used by our AutoTAMP framework. This shows the left prompt after task explanation and few-shot examples, and also the structures of syntactic checking and semantic checking.
+        The number of objects in each simplified problem for each domain. The baseline reports the number of objects in the full problems to help illustrate how many fewer objects are included in the simplified problems.
         </h2>     
     </div>
   </div>
@@ -250,10 +247,11 @@
         This work is part of a broader research thread around <emph>language-instructed task and motion planning</emph>, which allows us to transform from natural language instruction into robot trajectory.
       </p>
       <p>
-        Other work on natural language to STL translation and LLM-based agents from our lab include:
+        Other work on LLM-based robot task and motion planning from our lab include:
         <ul>
-          <li><a href="https://arxiv.org/pdf/2305.07766.pdf">NL2TL: Transforming Natural Languages to Temporal Logics using Large Language Models</a>.</li>
-          <li><a href="https://yongchao98.github.io/MIT-REALM-Multi-Robot/">Scalable Multi-Robot Collaboration with Large Language Models: Centralized or Decentralized Systems?</a>.</li>
+          <li><a href="https://arxiv.org/pdf/2306.06531">Autotamp: Autoregressive task and motion planning with llms as translators and checkers (ICRA 2024)</a>.</li>
+          <li><a href="https://arxiv.org/pdf/2309.15943">Scalable Multi-Robot Collaboration with Large Language Models: Centralized or Decentralized Systems? (ICRA 2024)</a>.</li>
+          <li><a href="https://arxiv.org/pdf/2305.07766">NL2TL: Transforming natural languages to temporal logics using large language models (EMNLP 2023)</a>.</li>
         </ul>
       </p>
     </div>
